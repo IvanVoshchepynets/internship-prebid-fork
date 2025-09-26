@@ -2,7 +2,7 @@
 
 **Module Name:** voshchepynets Bidder Adapter  
 **Module Type:** Bidder Adapter  
-**Maintainer:** ivan.voshchepynets@example.com
+**Maintainer:** voshchepynets123@gmail.com
 
 ### Example Ad Unit
 

@@ -1,0 +1,125 @@
+# Overview
+
+**Module Name:** voshchepynets Bidder Adapter  
+**Module Type:** Bidder Adapter  
+**Maintainer:** ivan.voshchepynets@example.com
+
+### Example Ad Unit
+
+```javascript
+var adUnits = [
+  {
+    code: "div-gpt-ad-12345",
+    mediaTypes: {
+      banner: {
+        sizes: [
+          [300, 250],
+          [728, 90],
+        ],
+      },
+    },
+    bids: [
+      {
+        bidder: "voshchepynetsBidAdapter",
+        params: {
+          placementId: "test123",
+          endpoint: "https://example.com/bid",
+        },
+      },
+    ],
+  },
+];
+```
+
+## Example Ad Unit
+
+```javascript
+var adUnits = [
+  {
+    code: "div-gpt-ad-12345",
+    mediaTypes: {
+      banner: {
+        sizes: [
+          [300, 250],
+          [728, 90],
+        ],
+      },
+    },
+    bids: [
+      {
+        bidder: "voshchepynetsBidAdapter",
+        params: {
+          placementId: "test123",
+          endpoint: "https://example.com/bid",
+        },
+      },
+    ],
+  },
+];
+```
+
+# Example page with voshchepynetsBidAdapter and GPT
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Test voshchepynetsBidAdapter</title>
+    <script src="./build/dist/prebid.js"></script>
+    <script
+      async
+      src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
+    ></script>
+  </head>
+  <body>
+    <h1>Testing voshchepynetsBidAdapter</h1>
+
+    <div id="div-gpt-ad-12345" style="width:300px; height:250px;">
+      <script>
+        var adUnits = [
+          {
+            code: "div-gpt-ad-12345",
+            mediaTypes: {
+              banner: {
+                sizes: [[300, 250]],
+              },
+            },
+            bids: [
+              {
+                bidder: "voshchepynetsBidAdapter",
+                params: {
+                  placementId: "test123",
+                  endpoint: "https://example.com/bid",
+                },
+              },
+            ],
+          },
+        ];
+
+        window.pbjs = window.pbjs || {};
+        pbjs.que = pbjs.que || [];
+
+        pbjs.que.push(function () {
+          pbjs.addAdUnits(adUnits);
+          pbjs.requestBids({
+            bidsBackHandler: function (bidResponses) {
+              console.log("Bid responses:", bidResponses);
+              pbjs.setTargetingForGPTAsync();
+            },
+          });
+        });
+
+        window.googletag = window.googletag || { cmd: [] };
+        googletag.cmd.push(function () {
+          googletag
+            .defineSlot("/123456/test", [[300, 250]], "div-gpt-ad-12345")
+            .addService(googletag.pubads());
+          googletag.pubads().enableSingleRequest();
+          googletag.enableServices();
+        });
+      </script>
+    </div>
+  </body>
+</html>
+```

@@ -23,34 +23,6 @@ var adUnits = [
         bidder: "voshchepynetsBidAdapter",
         params: {
           placementId: "test123",
-          endpoint: "https://example.com/bid",
-        },
-      },
-    ],
-  },
-];
-```
-
-## Example Ad Unit
-
-```javascript
-var adUnits = [
-  {
-    code: "div-gpt-ad-12345",
-    mediaTypes: {
-      banner: {
-        sizes: [
-          [300, 250],
-          [728, 90],
-        ],
-      },
-    },
-    bids: [
-      {
-        bidder: "voshchepynetsBidAdapter",
-        params: {
-          placementId: "test123",
-          endpoint: "https://example.com/bid",
         },
       },
     ],
@@ -66,60 +38,60 @@ var adUnits = [
   <head>
     <meta charset="UTF-8" />
     <title>Test voshchepynetsBidAdapter</title>
-    <script src="./build/dist/prebid.js"></script>
+    <script src="../../build/dist/prebid.js"></script>
     <script
       async
       src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
     ></script>
   </head>
+
   <body>
     <h1>Testing voshchepynetsBidAdapter</h1>
 
-    <div id="div-gpt-ad-12345" style="width:300px; height:250px;">
-      <script>
-        var adUnits = [
-          {
-            code: "div-gpt-ad-12345",
-            mediaTypes: {
-              banner: {
-                sizes: [[300, 250]],
-              },
+    <div id="div-gpt-ad-12345" style="width:300px; height:250px;"></div>
+
+    <script>
+      var adUnits = [
+        {
+          code: "div-gpt-ad-12345",
+          mediaTypes: {
+            banner: {
+              sizes: [[300, 250]],
             },
-            bids: [
-              {
-                bidder: "voshchepynetsBidAdapter",
-                params: {
-                  placementId: "test123",
-                  endpoint: "https://example.com/bid",
-                },
-              },
-            ],
           },
-        ];
-
-        window.pbjs = window.pbjs || {};
-        pbjs.que = pbjs.que || [];
-
-        pbjs.que.push(function () {
-          pbjs.addAdUnits(adUnits);
-          pbjs.requestBids({
-            bidsBackHandler: function (bidResponses) {
-              console.log("Bid responses:", bidResponses);
-              pbjs.setTargetingForGPTAsync();
+          bids: [
+            {
+              bidder: "voshchepynetsBidAdapter",
+              params: {
+                placementId: "test123",
+              },
             },
-          });
-        });
+          ],
+        },
+      ];
 
-        window.googletag = window.googletag || { cmd: [] };
-        googletag.cmd.push(function () {
-          googletag
-            .defineSlot("/123456/test", [[300, 250]], "div-gpt-ad-12345")
-            .addService(googletag.pubads());
-          googletag.pubads().enableSingleRequest();
-          googletag.enableServices();
+      window.pbjs = window.pbjs || {};
+      pbjs.que = pbjs.que || [];
+
+      pbjs.que.push(function () {
+        pbjs.addAdUnits(adUnits);
+        pbjs.requestBids({
+          bidsBackHandler: function (bidResponses) {
+            console.log("Bid responses:", bidResponses);
+            pbjs.setTargetingForGPTAsync();
+          },
         });
-      </script>
-    </div>
+      });
+
+      window.googletag = window.googletag || { cmd: [] };
+      googletag.cmd.push(function () {
+        googletag
+          .defineSlot("/123456/test", [[300, 250]], "div-gpt-ad-12345")
+          .addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+      });
+    </script>
   </body>
 </html>
 ```

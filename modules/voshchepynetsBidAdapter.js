@@ -5,9 +5,11 @@ const BIDDER_CODE = 'voshchepynetsBidAdapter';
 const spec = {
   code: BIDDER_CODE,
   aliases: ['voshchepynetsAdapter'],
+
   isBidRequestValid: (bid) => {
     return !!bid.params.placementId;
   },
+
   buildRequests: (validBidRequests, bidderRequest) => {
     return validBidRequests.map(bid => {
       return {
@@ -21,6 +23,7 @@ const spec = {
       };
     });
   },
+
   interpretResponse: (serverResponse, request) => {
     const bidResponses = [];
     if (serverResponse.body && serverResponse.body.bids) {
@@ -31,7 +34,7 @@ const spec = {
           width: bid.width,
           height: bid.height,
           ad: bid.ad,
-          currency: 'USD',
+          currency: bid.currency || 'USD', 
           netRevenue: true,
           ttl: 300,
         });

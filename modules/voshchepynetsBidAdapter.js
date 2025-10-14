@@ -2,7 +2,7 @@ import { registerBidder } from '../src/adapters/bidderFactory.js';
 
 const BIDDER_CODE = 'voshchepynetsBidAdapter';
 
-const spec = {
+export const spec = {
   code: BIDDER_CODE,
   aliases: ['voshchepynetsAdapter'],
 
@@ -14,7 +14,7 @@ const spec = {
     return validBidRequests.map(bid => {
       return {
         method: 'POST',
-        url: 'https://example.com/bid',
+        url: 'http://localhost:3000/adServer/bid',
         data: {
           placementId: bid.params.placementId,
           bidId: bid.bidId,
@@ -45,4 +45,3 @@ const spec = {
 };
 
 registerBidder(spec);
-export { spec };

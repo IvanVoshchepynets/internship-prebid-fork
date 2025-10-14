@@ -1,0 +1,7 @@
+{
+  "modules": {
+    "voshchepynetsBidAdapter": { "requires": ["bidderFactory"] },
+    "adtelligentBidAdapter": { "requires": ["bidderFactory"] },
+    "bidmaticBidAdapter": { "requires": ["bidderFactory"] }
+  }
+}

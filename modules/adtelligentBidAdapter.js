@@ -37,7 +37,7 @@ const getUri = function (bidderCode) {
   return PROTOCOL + getter() + AUCTION_PATH
 }
 const OUTSTREAM_SRC = 'https://player.adtelligent.com/outstream-unit/2.01/outstream.min.js';
-const BIDDER_CODE = 'adtelligent';
+const BIDDER_CODE = 'adtelligentBidAdapter';
 const OUTSTREAM = 'outstream';
 const DISPLAY = 'display';
 const syncsCache = {};

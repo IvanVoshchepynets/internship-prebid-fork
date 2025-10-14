@@ -22,7 +22,7 @@ import { getBoundingClientRect } from '../libraries/boundingClientRect/boundingC
  */
 
 const URL = 'https://adapter.bidmatic.io/bdm/auction';
-const BIDDER_CODE = 'bidmatic';
+const BIDDER_CODE = 'bidmaticBidAdapter';
 const SYNCS_DONE = new Set();
 
 /** @type {BidderSpec} */
